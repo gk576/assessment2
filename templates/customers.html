@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="nav-bar">
+        <a href="/employee" class="nav-btn">DASHBOARD</a>
+        <div class="nav-btn active-nav">Customers</div> <a href="/reports" class="nav-btn">Reports</a>
+        <a href="/logout" class="nav-btn">Log out</a>
+    </div>
+
+    <div class="table-container">
+        <table class="custom-table">
+            <thead>
+                <tr>
+                    <th style="width: 40%;">Customers</th>
+                    <th style="width: 30%;">Interaction Date</th>
+                    <th style="width: 30%;">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for c in customers %}
+                <tr>
+                    <td>{{ c.first_name }} {{ c.last_name }}</td>
+                    <td>
+                        {% if c.interaction_date %}
+                            {{ c.interaction_date.split('-')[2] }}/{{ c.interaction_date.split('-')[1] }}/{{ c.interaction_date.split('-')[0] }}
+                        {% else %}
+                            N/A
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="status-select-wrapper">
+                            <select class="status-dropdown">
+                                <option {% if c.status == 'Active' %}selected{% endif %}>Active</option>
+                                <option {% if c.status == 'Inactive' %}selected{% endif %}>Inactive</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    /* Specific styles for this page to match Figma */
+    .active-nav {
+        background: white !important;
+        font-weight: bold;
+        transform: translateY(-2px);
+    }
+    
+    .status-dropdown {
+        background: #888; 
+        color: white; 
+        border: none; 
+        padding: 5px; 
+        border-radius: 5px; 
+        width: 100%;
+        cursor: pointer;
+    }
+</style>
+{% endblock %}

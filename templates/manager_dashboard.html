@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block title %}Manager{% endblock %}
+
+{% block menu %}
+    <a class="btn-nav" href="/customers">Customers</a>
+    <a class="btn-nav" href="#">Reports</a>
+{% endblock %}
+
+{% block content %}
+<div class="glass-card">
+    <div class="text-center bg-secondary text-white p-2 mb-3" style="border-radius: 5px;">
+        <h3>Employees</h3>
+    </div>
+    
+    <table class="table table-custom">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Contact Info</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for emp in employees %}
+            <tr>
+                <td>{{ emp.username }}</td>
+                <td>{{ emp.email }}</td>
+            </tr>
+            {% endfor %}
+            {% if not employees %}
+            <tr><td colspan="2">No employees found.</td></tr>
+            {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

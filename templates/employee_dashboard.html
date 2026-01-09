@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="nav-bar">
+        <div class="nav-title">DASHBOARD</div>
+        <a href="/customers" class="nav-btn">Customers</a>
+        <a href="/reports" class="nav-btn">Reports</a>
+        <a href="/logout" class="nav-btn">Log out</a>
+    </div>
+
+    <div class="stats-container">
+        <div class="stat-card">
+            <h3>New Customers:</h3>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 2rem;">&#128100;+</span>
+                <span class="number">{{ new_customers }}</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <h3>Active Customers:</h3>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 2rem;">&#128101;</span>
+                <span class="number">{{ total_active }}</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <h3>Customer Interactions:</h3>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 2rem;">&#128222;</span>
+                <span class="number">{{ total_interactions }}</span>
+            </div>
+        </div>
+    </div>
+
+    <h2 style="font-family: 'Courier Prime'; text-align: center; color: black; margin-top: 40px;">Weekly Interactions:</h2>
+    
+    <div class="chart-wrapper">
+        <canvas id="weeklyChart" 
+                data-labels='{{ days | tojson }}' 
+                data-counts='{{ chart_data | tojson }}'>
+        </canvas>
+    </div>
+</div>
+
+<script>
+    const chartCanvas = document.getElementById('weeklyChart');
+    
+    const labels = JSON.parse(chartCanvas.dataset.labels);
+    const data = JSON.parse(chartCanvas.dataset.counts);
+
+    const ctx = chartCanvas.getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Interactions',
+                data: data,
+                borderColor: 'white',
+                borderWidth: 1.5,
+                backgroundColor: 'transparent',
+                pointRadius: 0,
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: { 
+                    beginAtZero: true, 
+                    grid: { color: 'rgba(255,255,255,0.2)' }, 
+                    ticks: { color: 'white', font: { family: 'Courier Prime'} } 
+                },
+                x: { 
+                    grid: { color: 'rgba(255,255,255,0.2)' }, 
+                    ticks: { color: 'white', font: { family: 'Courier Prime'} } 
+                }
+            },
+            plugins: { legend: { display: false } }
+        }
+    });
+</script>
+{% endblock %}

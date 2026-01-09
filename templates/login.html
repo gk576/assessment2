@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login-wrapper">
+    <div class="glass-card login-box">
+        
+        <div class="login-header">SIGN IN</div>
+        
+        <div style="font-size: 4rem; color: #6495ED; margin-top: -10px; margin-bottom: 20px; text-shadow: 0 4px 10px rgba(100, 149, 237, 0.4);">
+            &#128100;
+        </div>
+        
+        <form method="POST" action="/login">
+            <div class="input-group">
+                <label>Email or Username:</label>
+                <input type="text" name="email" required autocomplete="username">
+            </div>
+
+            <div class="input-group">
+                <label>Password:</label>
+                <input type="password" name="password" required>
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; margin-top: 15px; margin-bottom: 30px; font-family: 'Courier Prime', monospace;">
+                <label style="cursor: pointer; display: flex; align-items: center; gap: 5px;">
+                    <input type="checkbox" name="remember" style="accent-color: #7B68EE;"> 
+                    Remember me
+                </label>
+                <a href="/forgot-password" style="color: #111; text-decoration: none; font-style: italic;">Forgot password?</a>
+            </div>
+
+            <button type="submit" class="primary-btn login-btn">Login</button>
+
+            <div style="margin-top: 15px; font-size: 0.8rem;">
+                <a href="/register" style="color: #333; text-decoration: none; border-bottom: 1px dotted #333;">Create an Account</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
