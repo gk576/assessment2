@@ -1,0 +1,247 @@
+/* Google Fonts to match Figma (Monospace for Headers, Sans for body) */
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    
+    /* --- Exact Figma Background Replication --- */
+    background-color: #3b3b98; /* Fallback dark blue */
+    background-image: 
+        /* 1. Teal/Cyan glow (Top Left/Center) */
+        radial-gradient(at 30% 30%, rgba(94, 231, 223, 0.6) 0px, transparent 50%),
+        
+        /* 2. Purple/Pink glow (Top Right) */
+        radial-gradient(at 80% 20%, rgba(138, 114, 226, 0.5) 0px, transparent 50%),
+        
+        /* 3. Light Blue glow (Bottom Center/Right) */
+        radial-gradient(at 60% 80%, rgba(100, 149, 237, 0.6) 0px, transparent 50%),
+        
+        /* 4. Deep Purple/Blue Base Gradient */
+        linear-gradient(120deg, #2b32b2 0%, #1488cc 100%);
+        
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Glassmorphism Card Style */
+.glass-card {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    margin-top: 20px;
+}
+
+/* Headers */
+h1, h2, h3, .navbar-brand, .btn-nav {
+    font-family: 'Courier Prime', monospace; 
+    font-weight: 700;
+}
+
+/* Navbar Buttons (Silver look from Figma) */
+.btn-nav {
+    background: #c0c0c0;
+    border: 1px solid #999;
+    color: #000;
+    margin: 0 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    font-size: 1.1rem;
+    padding: 5px 15px;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn-nav:hover {
+    background: #dcdcdc;
+    color: #000;
+}
+
+/* Custom Primary Buttons (Purple) */
+.btn-primary-custom {
+    background-color: #5a4fcf;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(90, 79, 207, 0.4);
+    width: 100%;
+    margin-top: 10px;
+}
+.btn-primary-custom:hover {
+    background-color: #483db0;
+    color: #fff;
+}
+
+/* Tables matching Figma */
+.table-custom {
+    background: rgba(255,255,255,0.5);
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+}
+.table-custom th {
+    background: rgba(0,0,0,0.1);
+    font-family: 'Courier Prime', monospace;
+    font-size: 1.2rem;
+}
+
+/* KPI Cards for Employee Dashboard */
+.kpi-card {
+    background-color: #5a4fcf;
+    color: white;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+}
+.kpi-number {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+/* Toggle Switch for Admin */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px; width: 16px;
+  left: 4px; bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+input:checked + .slider { background-color: #66bb6a; } /* Green */
+input:focus + .slider { box-shadow: 0 0 1px #66bb6a; }
+input:checked + .slider:before { transform: translateX(26px); }
+
+/* Form inputs transparent */
+.form-control-glass {
+    background: rgba(255,255,255,0.3);
+    border: none;
+    border-bottom: 1px solid #333;
+    border-radius: 0;
+}
+
+/* --- User Selection Screen Specifics --- */
+.role-select-btn {
+    background-color: #5555ff; /* Bright Blue-Purple */
+    color: white;
+    text-decoration: none;
+    font-family: 'Courier Prime', monospace;
+    font-size: 1rem;
+    padding: 15px 0; /* Vertical padding */
+    width: 280px;      /* Fixed width to match Figma look */
+    border-radius: 50px; /* High border-radius for pill shape */
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s, background-color 0.2s;
+    display: block;
+}
+
+.role-select-btn:hover {
+    background-color: #4444dd;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Login Box Specifics --- */
+.login-box {
+    width: 380px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.75); /* Higher opacity white for the card */
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.login-header {
+    font-family: 'Courier Prime', monospace;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    color: #222;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* --- Underlined Inputs (Match Screenshot) --- */
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-family: 'Courier Prime', monospace;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 5px 0;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid #999; /* Grey underline */
+    border-radius: 0;
+    outline: none;
+    color: #000;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.3s;
+}
+
+.input-group input:focus {
+    border-bottom: 2px solid #7B68EE; /* Purple underline on focus */
+}
+
+/* --- Login Button (Purple Gradient) --- */
+.login-btn {
+    width: 100%; /* Full width button */
+    background: linear-gradient(135deg, #7B68EE 0%, #9370DB 100%); /* Purple Gradient */
+    box-shadow: 0 5px 15px rgba(123, 104, 238, 0.4);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.login-btn:hover {
+    background: linear-gradient(135deg, #6A5ACD 0%, #8A2BE2 100%);
+    transform: translateY(-2px);
+}
+
+.login-wrapper {
+    display: flex;
+    justify-content: center; /* Center Horizontally */
+    align-items: center;     /* Center Vertically */
+    width: 100%;
+    min-height: 100vh;       /* Force it to take full screen height */
+    position: absolute;      /* Ensure it sits correctly on the background */
+    top: 0;
+    left: 0;
+}
