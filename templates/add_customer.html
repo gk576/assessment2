@@ -1,0 +1,16 @@
+{% extends 'base_employee.html' %}
+
+{% block title %}Add Customer{% endblock %} 
+
+{% block content %}
+
+<h1>Add Customer</h1>
+
+<form method="post">
+    <input type="text" name="first_name" placeholder="Name" /> <br>
+    <input type="text" name="last_name" placeholder="Surname" /> <br>
+    <input type="email" name="email" placeholder="E Mail" /> <br>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}
