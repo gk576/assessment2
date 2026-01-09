@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block title %}Admin{% endblock %}
+
+{% block menu %}
+    <a class="btn-nav" href="#">Customers</a>
+    <a class="btn-nav" href="#">Reports</a>
+{% endblock %}
+
+{% block content %}
+<div class="glass-card">
+    <div class="text-center bg-secondary text-white p-2 mb-3" style="border-radius: 5px;">
+        <h3>User Database:</h3>
+    </div>
+    
+    <table class="table table-custom table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status Change</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>
+                    <form action="/toggle_user/{{ user.uid }}" method="POST">
+                        <label class="switch">
+                            <input type="checkbox" onchange="this.form.submit()" 
+                                   {% if user.is_active == 1 %}checked{% endif %}
+                                   {% if user.username == 'admin' %}disabled{% endif %}>
+                            <span class="slider round"></span>
+                        </label>
+                        <span class="ms-2">{% if user.is_active %}Active{% else %}Inactive{% endif %}</span>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
